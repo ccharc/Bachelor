@@ -17,7 +17,14 @@ cons18 = read_xls("consumption-se-areas_2018_hourly.xls")
 cons19 = read_xls("consumption-se-areas_2019_hourly.xls")
 cons20 = read_xls("consumption-se-areas_2020_hourly.xls")
 
-windprod13_20 = read_xls("VindProduktionsStatistik.xls")
+wind15 = read_xls("wind-power-se_2015_hourly.xls")
+wind16 = read_xls("wind-power-se_2016_hourly.xls")
+wind17 = read_xls("wind-power-se_2017_hourly.xls")
+wind18 = read_xls("wind-power-se_2018_hourly.xls")
+wind19 = read_xls("wind-power-se_2019_hourly.xls")
+wind20 = read_xls("wind-power-se_2020_hourly.xls")
+
+
 
 dfp13 = data.frame(elprice13)
 dfp14 = data.frame(elprice14)
@@ -71,7 +78,7 @@ CONS20 = dfc20[3:1658,3]
 
 SE1cons = c(CONS15,CONS16,CONS17,CONS18,CONS19,CONS20)
 
-cons = data.frame(Hours,SE1cons)
+Cons = data.frame(Hours,SE1cons)
 
 Wind = data.frame(windprod13_20[746:46224,3])
 
