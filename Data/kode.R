@@ -24,6 +24,16 @@ wind18 = read_xls("wind-power-se_2018_hourly.xls")
 wind19 = read_xls("wind-power-se_2019_hourly.xls")
 wind20 = read_xls("wind-power-se_2020_hourly.xls")
 
+dates15 = seq(as.Date("2015-01-01"),as.Date("2015-12-31"),1)
+dates16 = seq(as.Date("2016-01-01"),as.Date("2016-12-31"),1)
+dates17 = seq(as.Date("2017-01-01"),as.Date("2017-12-31"),1)
+dates18 = seq(as.Date("2018-01-01"),as.Date("2018-12-31"),1)
+
+dates = c(dates15,dates16,dates17,dates18)
+
+hours <- merge(1:24, seq(0, 45, by = 60))
+
+
 dfp15 = data.frame(elprice15)
 dfp16 = data.frame(elprice16)
 dfp17 = data.frame(elprice17)
@@ -47,7 +57,7 @@ HOURS18 = dfp18[3:8763,2]
 HOURS19 = dfp19[3:8763,2]
 HOURS20 = dfp20[3:1658,2]
 
-Hours = c(HOURS15,HOURS16,HOURS17,HOURS18,HOURS19,HOURS20)
+Hours = c(HOURS15,HOURS16,HOURS17,HOURS18)
 
 ELspot = data.frame(Hours,SE1price)
                   
@@ -81,17 +91,16 @@ WIND18 = dfw18[3:8763,3]
 WIND19 = dfw19[3:8763,3]
 WIND20 = dfw20[3:1658,3]
 
-SE1wind = c(WIND15,WIND16,WIND17,WIND18,WIND19,WIND20)
+SE1wind = c(WIND15,WIND16,WIND17,WIND18)
 
-SE1cons = c(CONS15,CONS16,CONS17,CONS18,CONS19,CONS20)
+SE1cons = c(CONS15,CONS16,CONS17,CONS18)
 
-SE1price= c(PRICE15,PRICE16,PRICE17,PRICE18,PRICE19,PRICE20)
+SE1price= c(PRICE15,PRICE16,PRICE17,PRICE18)
 
+data = data.frame(Hours,SE1price,SE1cons,SE1wind)
 
+windseries = ts(SE1wind)
+consseries = ts(SE1cons)
+priceseries= ts(SE1price)
 
-
-mimerwind = read_xls("VindProduktionsStatistik.xls")
-mimerwind1 = data.frame(mimerwind[1299:46225,3])
-
-#Der er 44927 observationer i mimerwind1 og 44932 observationer i SE1cons, SE1wind og SE1price,
-#som er de datasæt der er hentet fra Nordpool. 
+plot.ts(priceseries)
