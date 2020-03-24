@@ -24,10 +24,6 @@ wind18 = read_xls("wind-power-se_2018_hourly.xls")
 wind19 = read_xls("wind-power-se_2019_hourly.xls")
 wind20 = read_xls("wind-power-se_2020_hourly.xls")
 
-
-
-dfp13 = data.frame(elprice13)
-dfp14 = data.frame(elprice14)
 dfp15 = data.frame(elprice15)
 dfp16 = data.frame(elprice16)
 dfp17 = data.frame(elprice17)
@@ -35,18 +31,16 @@ dfp18 = data.frame(elprice18)
 dfp19 = data.frame(elprice19)
 dfp20 = data.frame(elprice20)
 
-PRICE13 = dfp13[3:8763,4]
-PRICE14 = dfp14[3:8763,4]
-PRICE15 = dfp15[3:8763,4]
+
+PRICE15 = dfp15[556:8763,4]
 PRICE16 = dfp16[3:8787,4]
 PRICE17 = dfp17[3:8763,4]
 PRICE18 = dfp18[3:8763,4]
 PRICE19 = dfp19[3:8763,4]
 PRICE20 = dfp20[3:1658,4]
 
-HOURS13 = dfp13[3:8763,2]
-HOURS14 = dfp14[3:8763,2]
-HOURS15 = dfp15[3:8763,2]
+
+HOURS15 = dfp15[556:8763,2]
 HOURS16 = dfp16[3:8787,2]
 HOURS17 = dfp17[3:8763,2]
 HOURS18 = dfp18[3:8763,2]
@@ -54,12 +48,9 @@ HOURS19 = dfp19[3:8763,2]
 HOURS20 = dfp20[3:1658,2]
 
 Hours = c(HOURS15,HOURS16,HOURS17,HOURS18,HOURS19,HOURS20)
-SE1price= c(PRICE15,PRICE16,PRICE17,PRICE18,PRICE19,PRICE20)
 
 ELspot = data.frame(Hours,SE1price)
                   
-dfc13 = data.frame(cons13)
-dfc14 = data.frame(cons14)
 dfc15 = data.frame(cons15)
 dfc16 = data.frame(cons16)
 dfc17 = data.frame(cons17)
@@ -67,24 +58,40 @@ dfc18 = data.frame(cons18)
 dfc19 = data.frame(cons19)
 dfc20 = data.frame(cons20)
 
-CONS13 = dfc13[3:8763,3]
-CONS14 = dfc14[3:8763,3]
-CONS15 = dfc15[3:8763,3]
+CONS15 = dfc15[556:8763,3]
 CONS16 = dfc16[3:8787,3]
 CONS17 = dfc17[3:8763,3]
 CONS18 = dfc18[3:8763,3]
 CONS19 = dfc19[3:8763,3]
 CONS20 = dfc20[3:1658,3]
 
-SE1cons = c(CONS15,CONS16,CONS17,CONS18,CONS19,CONS20)
-
 Cons = data.frame(Hours,SE1cons)
 
-Wind = data.frame(windprod13_20[746:46224,3])
+dfw15 = data.frame(wind15)
+dfw16 = data.frame(wind16)
+dfw17 = data.frame(wind17)
+dfw18 = data.frame(wind18)
+dfw19 = data.frame(wind19)
+dfw20 = data.frame(wind20)
+
+WIND15 = dfw15[556:8763,3]
+WIND16 = dfw16[3:8787,3]
+WIND17 = dfw17[3:8763,3]
+WIND18 = dfw18[3:8763,3]
+WIND19 = dfw19[3:8763,3]
+WIND20 = dfw20[3:1658,3]
+
+SE1wind = c(WIND15,WIND16,WIND17,WIND18,WIND19,WIND20)
+
+SE1cons = c(CONS15,CONS16,CONS17,CONS18,CONS19,CONS20)
+
+SE1price= c(PRICE15,PRICE16,PRICE17,PRICE18,PRICE19,PRICE20)
 
 
-timerwind = data.frame(windprod13_20[746:46224,1])
 
 
+mimerwind = read_xls("VindProduktionsStatistik.xls")
+mimerwind1 = data.frame(mimerwind[1299:46225,3])
 
-
+#Der er 44927 observationer i mimerwind1 og 44932 observationer i SE1cons, SE1wind og SE1price,
+#som er de datasæt der er hentet fra Nordpool. 
