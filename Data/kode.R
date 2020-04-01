@@ -80,16 +80,14 @@ plot.ts(windseries)
 plot.ts(consseries)
 
 
-season = function(t,c1,c2){
-  s_t = c1 * (sin((t*2*pi)/365))+c2 * (cos((t*2*pi)/365))
-}
-
-fit = lm(SE1cons ~ c1 * (sin((t*2*pi)/365))+c2 * (cos((t*2*pi)/365)), data = data)
 
 
 
-mod1 = lm(SE1price ~ SE1cons + SE1wind, data = data)
-mod1
+
+fit = lm(SE1price ~ SE1cons + SE1wind, data = data)
+fit
+
+scoef(fit)
 
 
 

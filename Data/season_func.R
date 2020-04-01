@@ -1,3 +1,5 @@
+rm(list=ls())
+
 # Koefficientudregning af S(t)
 scoef = function(fit){
   coef = as.numeric(fit$coefficients)
@@ -64,12 +66,12 @@ scoef = function(fit){
   sdc12 = sqrt( (365.25/( 2*pi*(coef[14]^2 + coef[15]^2) ) )^2 * ( coef[15]^2 * cm[14,14] + coef[14]^2 * cm[15,15] - 2*coef[14]*coef[15]*cm[14,15])  )
   
 } 
+
 # Dataframe med alt info
-ls <- list( coef = data.frame(b0 = coef[1] , b1 = coef[2] , b2 = coef[3] , c1 = c1 , c2 = c2 ,
-                              c3 = c3 , c4 = c4 , c5 = c5 , c6 = c6 , c7 = c7 , c8 = c8 , c9 = c9 , c10 = c10 ,
-                              d1 = coef[16] #evt helligdag
-                              sdc  = data.frame(b0 = sqrt(cm[1,1]) , b1 = sqrt(cm[2,2]) , b2 = sqrt(cm[3,3]) , 
-                                                c1 = sdc1 , c2 = sdc2 , c3 = sdc3 , c4 = sdc4 , c5 = sdc5 , c6 = sdc6 , c7 =sdc7 , 
-                                                c8 = sdc8 , c9 = sdc9 , c10 = sdc10 , c11 = sdc11 , c12 = sdc12 ,
-                                                d1 = sqrt(cm[16,16]) #evt helligdag  ) )
-                                                return(ls)
+ls = list( coef = data.frame(b0 = coef[1] , b1 = coef[2] , b2 = coef[3] , c1 = c1 , c2 = c2 , c3 = c3 , c4 = c4 , 
+                             c5 = c5 , c6 = c6 , c7 = c7 , c8 = c8 , c9 = c9 , c10 = c10 ), 
+                             sdc  = data.frame(b0 = sqrt(cm[1,1]) , b1 = sqrt(cm[2,2]) , b2 = sqrt(cm[3,3]) , 
+                                               c1 = sdc1 , c2 = sdc2 , c3 = sdc3 , c4 = sdc4 , c5 = sdc5 , c6 = sdc6 , 
+                                               c7 =sdc7 , c8 = sdc8 , c9 = sdc9 , c10 = sdc10 , c11 = sdc11 , c12 = sdc12 ))
+                             
+           
