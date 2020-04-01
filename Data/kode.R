@@ -1,33 +1,23 @@
 library(readxl)
+library(vars)
 
-elprice15 = read_xls("elspot-prices_2015_hourly_eur.xls")
-elprice16 = read_xls("elspot-prices_2016_hourly_eur.xls")
-elprice17 = read_xls("elspot-prices_2017_hourly_eur.xls")
-elprice18 = read_xls("elspot-prices_2018_hourly_eur.xls")
 
-cons15 = read_xls("consumption-se-areas_2015_hourly.xls")
-cons16 = read_xls("consumption-se-areas_2016_hourly.xls")
-cons17 = read_xls("consumption-se-areas_2017_hourly.xls")
-cons18 = read_xls("consumption-se-areas_2018_hourly.xls")
+elprice15 = data.frame(read.csv("elspot-prices_2015_hourly_eur.csv",sep=";"))
+elprice16 = data.frame(read.csv("elspot-prices_2016_hourly_eur.csv",sep=";"))
+elprice17 = data.frame(read.csv("elspot-prices_2017_hourly_eur.csv",sep=";"))
+elprice18 = data.frame(read.csv("elspot-prices_2018_hourly_eur.csv",sep=";"))
 
-wind15 = read_xls("wind-power-se_2015_hourly.xls")
-wind16 = read_xls("wind-power-se_2016_hourly.xls")
-wind17 = read_xls("wind-power-se_2017_hourly.xls")
-wind18 = read_xls("wind-power-se_2018_hourly.xls")
+cons15 = data.frame(read.csv("consumption-se-areas_2015_hourly.csv",sep=";"))
+cons16 = data.frame(read.csv("consumption-se-areas_2016_hourly.csv",sep=";"))
+cons17 = data.frame(read.csv("consumption-se-areas_2017_hourly.csv",sep=";"))
+cons18 = data.frame(read.csv("consumption-se-areas_2018_hourly.csv",sep=";"))
+
+wind15 = data.frame(read.csv("wind-power-se_2015_hourly.csv",sep=";"))
+wind16 = data.frame(read.csv("wind-power-se_2016_hourly.csv",sep=";"))
+wind17 = data.frame(read.csv("wind-power-se_2017_hourly.csv",sep=";"))
+wind18 = data.frame(read.csv("wind-power-se_2018_hourly.csv",sep=";"))
 
 #DATOER
-#values15 = seq(from = as.Date("2015-02-01"), to = as.Date("2015-12-31"), by = 'day')
-#values16 = seq(from = as.Date("2016-01-01"), to = as.Date("2016-12-31"), by = 'day')
-#values17 = seq(from = as.Date("2017-01-01"), to = as.Date("2017-12-31"), by = 'day')
-#values18 = seq(from = as.Date("2018-01-01"), to = as.Date("2018-12-31"), by = 'day')
-
-#date15 = rep(values15, each = 24)
-#date16 = rep(values16, each = 24)
-#date17 = rep(values17, each = 24)
-#date18 = rep(values18, each = 24)
-
-#dates = c(date15,date16,date17,date18)
-
 
 #TIMER
 #HOURS15 = dfp15[747:8763,2]
@@ -38,50 +28,44 @@ wind18 = read_xls("wind-power-se_2018_hourly.xls")
 #Hours = c(HOURS15,HOURS16,HOURS17,HOURS18)
 
 #PRISER
-dfp15 = data.frame(elprice15)
-dfp16 = data.frame(elprice16)
-dfp17 = data.frame(elprice17)
-dfp18 = data.frame(elprice18)
-
-PRICE15 = dfp15[747:8763,4]
-PRICE16 = dfp16[3:8787,4]
-PRICE17 = dfp17[3:8763,4]
-PRICE18 = dfp18[3:8763,4]
+PRICE15 = elprice15[554:8763,4]
+PRICE16 = elprice16[3:8787,4]
+PRICE17 = elprice17[3:8763,4]
+PRICE18 = elprice18[3:6290,4]
 
 
 SE1price= c(PRICE15,PRICE16,PRICE17,PRICE18)
-
+dfprice  = data.frame(SE1price)
 
 #FORBRUG
                   
-dfc15 = data.frame(cons15)
-dfc16 = data.frame(cons16)
-dfc17 = data.frame(cons17)
-dfc18 = data.frame(cons18)
-
-
-CONS15 = dfc15[747:8763,3]
-CONS16 = dfc16[3:8787,3]
-CONS17 = dfc17[3:8763,3]
-CONS18 = dfc18[3:8763,3]
+CONS15 = cons15[554:8763,3]
+CONS16 = cons16[3:8787,3]
+CONS17 = cons17[3:8763,3]
+CONS18 = cons18[3:6290,3]
 
 SE1cons = c(CONS15,CONS16,CONS17,CONS18)
+dfcons = data.frame(SE1cons)
 
 
 #VINDPRODUKTION
-dfw15 = data.frame(wind15)
-dfw16 = data.frame(wind16)
-dfw17 = data.frame(wind17)
-dfw18 = data.frame(wind18)
+
+WIND15 = wind15[554:8763,3]
+WIND16 = wind16[3:8787,3]
+WIND17 = wind17[3:8763,3]
+WIND18 = wind18[3:6290,3]
 
 
-WIND15 = dfw15[747:8763,3]
-WIND16 = dfw16[3:8787,3]
-WIND17 = dfw17[3:8763,3]
-WIND18 = dfw18[3:8763,3]
+SE1wind =c(WIND15,WIND16,WIND17,WIND18)
 
+#DATO
 
-SE1wind = c(WIND15,WIND16,WIND17,WIND18)
+#dato15 = elprice15[554:8763,1]
+#dato16 = elprice16[3:8787,1]
+#dato17 = elprice17[3:8763,1]
+#dato18 = elprice18[3:6290,1]
+
+#dato = c(dato15,dato16,dato17,dato18)
 
 #DATA
 
@@ -95,7 +79,21 @@ plot.ts(priceseries)
 plot.ts(windseries)
 plot.ts(consseries)
 
-library(vars)
+
+season = function(t,c1,c2){
+  s_t = c1 * (sin((t*2*pi)/365))+c2 * (cos((t*2*pi)/365))
+}
+
+fit = lm(SE1cons ~ c1 * (sin((t*2*pi)/365))+c2 * (cos((t*2*pi)/365)), data = data)
+
+
+arima(SE1cons ~c1 * (sin((t*2*pi)/365))+c2 * (cos((t*2*pi)/365)), data = data)
+
+mod1 = lm(SE1price ~ SE1cons + SE1wind, data = data)
+mod1
+
+
+
 
 
 
