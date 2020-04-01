@@ -81,13 +81,16 @@ plot.ts(consseries)
 
 
 
-
-
+mod1 = ar(SE1cons)
+mod1
 
 fit = lm(SE1price ~ SE1cons + SE1wind, data = data)
 fit
+summary(fit)
+mm = scoef(fit)
 
-scoef(fit)
+cm =(mod1$coefficients)
+cm
 
 
 
