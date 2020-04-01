@@ -87,13 +87,9 @@ season = function(t,c1,c2){
 fit = lm(SE1cons ~ c1 * (sin((t*2*pi)/365))+c2 * (cos((t*2*pi)/365)), data = data)
 
 
-arima(SE1cons ~c1 * (sin((t*2*pi)/365))+c2 * (cos((t*2*pi)/365)), data = data)
 
 mod1 = lm(SE1price ~ SE1cons + SE1wind, data = data)
 mod1
-
-
-
 
 
 
