@@ -34,7 +34,7 @@ PRICE17 = elprice17[3:8763,4]
 PRICE18 = elprice18[3:6290,4]
 
 
-SE1price= na_mean(c(PRICE15,PRICE16,PRICE17,PRICE18))
+SE1price= na_interpolation(c(PRICE15,PRICE16,PRICE17,PRICE18), option = "linear")
 dfprice  = data.frame(SE1price)
 
 #FORBRUG
@@ -44,7 +44,7 @@ CONS16 = cons16[3:8787,3]
 CONS17 = cons17[3:8763,3]
 CONS18 = cons18[3:6290,3]
 
-SE1cons = na_mean(c(CONS15,CONS16,CONS17,CONS18))
+SE1cons = na_interpolation(c(CONS15,CONS16,CONS17,CONS18), option = "linear")
 dfcons = data.frame(SE1cons)
 
 
@@ -56,7 +56,7 @@ WIND17 = wind17[3:8763,3]
 WIND18 = wind18[3:6290,3]
 
 
-SE1wind =na_mean(c(WIND15,WIND16,WIND17,WIND18))
+SE1wind =na_interpolation(c(WIND15,WIND16,WIND17,WIND18), option = "linear")
 
 #DATO
 
@@ -99,7 +99,7 @@ myfunc = function(b_0, b_T, c_1,c_2,c_3,c_4,c_5,c_6,c_7,c_8,c_9,c_10,c_11,c_12,c
                 c_7 * sin((t*24*pi)/365) + c_8 * cos((t*24*pi)/365)+  
                 c_9 * sin((t*104*pi)/365) + c_10 * cos((t*104*pi)/365)+
                 c_11 * sin((t*730*pi)/365) + c_12 * cos((t*730*pi)/365)+
-                c_13 * sin((t*17520*pi)/365) + c_14 * ((t*17520*pi)/365)   
+                c_13 * sin((t*17520*pi)/365) + c_14 * cos((t*17520*pi)/365)   
   }
 
 
