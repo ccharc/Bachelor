@@ -2,10 +2,10 @@ library(readxl)
 library(vars)
 
 
-elprice15 = data.frame(read.csv("elspot-prices_2015_hourly_eur.csv",sep=";"))
-elprice16 = data.frame(read.csv("elspot-prices_2016_hourly_eur.csv",sep=";"))
-elprice17 = data.frame(read.csv("elspot-prices_2017_hourly_eur.csv",sep=";"))
-elprice18 = data.frame(read.csv("elspot-prices_2018_hourly_eur.csv",sep=";"))
+elprice15 = data.frame(read.csv("elspot-prices_2015_hourly_eur.csv",sep=";"), "numeric")
+elprice16 = data.frame(read.csv("elspot-prices_2016_hourly_eur.csv",sep=";"), "numeric")
+elprice17 = data.frame(read.csv("elspot-prices_2017_hourly_eur.csv",sep=";"), "numeric")
+elprice18 = data.frame(read.csv("elspot-prices_2018_hourly_eur.csv",sep=";"), "numeric")
 
 cons15 = data.frame(read.csv("consumption-se-areas_2015_hourly.csv",sep=";"))
 cons16 = data.frame(read.csv("consumption-se-areas_2016_hourly.csv",sep=";"))
@@ -34,7 +34,7 @@ PRICE17 = elprice17[3:8763,4]
 PRICE18 = elprice18[3:6290,4]
 
 
-SE1price= c(PRICE15,PRICE16,PRICE17,PRICE18)
+SE1price= na_mean(c(PRICE15,PRICE16,PRICE17,PRICE18))
 dfprice  = data.frame(SE1price)
 
 #FORBRUG
@@ -44,7 +44,7 @@ CONS16 = cons16[3:8787,3]
 CONS17 = cons17[3:8763,3]
 CONS18 = cons18[3:6290,3]
 
-SE1cons = c(CONS15,CONS16,CONS17,CONS18)
+SE1cons = na_mean(c(CONS15,CONS16,CONS17,CONS18))
 dfcons = data.frame(SE1cons)
 
 
@@ -56,7 +56,7 @@ WIND17 = wind17[3:8763,3]
 WIND18 = wind18[3:6290,3]
 
 
-SE1wind =c(WIND15,WIND16,WIND17,WIND18)
+SE1wind =na_mean(c(WIND15,WIND16,WIND17,WIND18))
 
 #DATO
 
@@ -71,26 +71,22 @@ SE1wind =c(WIND15,WIND16,WIND17,WIND18)
 
 data = data.frame(SE1price,SE1cons,SE1wind)
 
-windseries = ts(SE1wind)
-consseries = ts(SE1cons)
-priceseries= ts(SE1price)
+windseries = as.ts(SE1wind)
+consseries = as.ts(SE1cons)
+priceseries= as.ts(SE1price)
 
 plot.ts(priceseries)
 plot.ts(windseries)
 plot.ts(consseries)
 
+acf(consseries)
+acf(windseries)
+acf(priceseries)
 
 
-mod1 = ar(SE1cons)
-mod1
 
-fit = lm(SE1price ~ SE1cons + SE1wind, data = data)
-fit
-summary(fit)
-mm = scoef(fit)
 
-cm =(mod1$coefficients)
-cm
+
 
 
 
