@@ -1,7 +1,7 @@
 
 # Koefficientudregning af S(t)
 scoef = function(fit){
-  coef = as.numeric(fit$coefficients)
+  coef = coefficients(fit)
   cm = vcov(fit)
   
   # Koefficienter til ?rlig periode

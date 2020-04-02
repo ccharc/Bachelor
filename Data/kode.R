@@ -71,9 +71,9 @@ SE1wind =na_mean(c(WIND15,WIND16,WIND17,WIND18))
 
 data = data.frame(SE1price,SE1cons,SE1wind)
 
-windseries = as.ts(SE1wind)
-consseries = as.ts(SE1cons)
-priceseries= as.ts(SE1price)
+windseries = msts(data = SE1wind, seasonal.periods = c(24, 48, 168))
+consseries = msts(data = SE1cons, seasonal.periods = c(24, 48, 168))
+priceseries= msts(data = SE1price, seasonal.periods = c(24, 48, 168))
 
 plot.ts(priceseries)
 plot.ts(windseries)
@@ -82,6 +82,25 @@ plot.ts(consseries)
 acf(consseries)
 acf(windseries)
 acf(priceseries)
+
+decwind = decompose(windseries)
+deccons = decompose(consseries)
+decprice = decompose(priceseries)
+
+plot(decwind)
+plot(deccons)
+plot(decprice)
+
+myfunc = function(b_0, b_T, c_1,c_2,c_3,c_4,c_5,c_6,c_7,c_8,c_9,c_10,c_11,c_12,c13,c_14,t){
+        b_0+b_T*t+
+                c_1 * sin((t*2*pi)/365) + c_2* cos((t*2*pi)/365)+
+                c_3 * sin((t*4*pi)/365) + c_4 * cos((t*4*pi)/365)+
+                c_5 * sin((t*8*pi)/365) + c_6 * cos((t*8*pi)/365)+
+                c_7 * sin((t*24*pi)/365) + c_8 * cos((t*24*pi)/365)+  
+                c_9 * sin((t*104*pi)/365) + c_10 * cos((t*104*pi)/365)+
+                c_11 * sin((t*730*pi)/365) + c_12 * cos((t*730*pi)/365)+
+                c_13 * sin((t*17520*pi)/365) + c_14 * ((t*17520*pi)/365)   
+  }
 
 
 
