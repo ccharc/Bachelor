@@ -13,12 +13,12 @@ scoef = function(fit){
   # Koefficienter til halvårlig periode
   
   c3  = sqrt(coef[6]^2 + coef[7]^2)
-  c4  = atan(coef[7]/coef[6]) * 365.25/(8*pi)
+  c4  = atan(coef[7]/coef[6]) * 365.25/(4*pi)
   
   # Koefficienter til kvartal periode
   
   c5  = sqrt(coef[8]^2 + coef[9]^2)
-  c6  = atan(coef[9]/coef[8]) * 365.25/(24*pi) 
+  c6  = atan(coef[9]/coef[8]) * 365.25/(8*pi) 
   
   # Koefficienter til månedlig periode
   
@@ -28,12 +28,12 @@ scoef = function(fit){
   #Koefficienter til ugentlig periode
   
   c9 = sqrt(coef[12]^2 + coef[13]^2)
-  c10 = atan(coef[13]/coef[12]) * 365.25/(24*pi)
+  c10 = atan(coef[13]/coef[12]) * 365.25/(104*pi)
   
   #Koefficienter til daglig periode
   
   c9 = sqrt(coef[14]^2 + coef[15]^2)
-  c10 = atan(coef[15]/coef[14]) * 365.25/(24*pi)
+  c10 = atan(coef[15]/coef[14]) * 365.25/(730*pi)
   
   # Standardafvigelser til årlig periode
   
