@@ -1,6 +1,6 @@
 
 # Koefficientudregning af S(t)
-scoef = function(fit){
+  scoef = function(fit){
   coef = as.numeric(fit$coefficients)
   cm = vcov(fit)
   
@@ -31,8 +31,8 @@ scoef = function(fit){
   
   #Koefficienter til daglig periode
   
-  c9 = sqrt(coef[14]^2 + coef[15]^2)
-  c10 = atan(coef[15]/coef[14]) * 365.25/(730*pi)
+  c11 = sqrt(coef[14]^2 + coef[15]^2)
+  c12 = atan(coef[15]/coef[14]) * 365.25/(730*pi)
   
   # Standardafvigelser til ?rlig periode
   
@@ -68,9 +68,9 @@ scoef = function(fit){
 
 # Dataframe med alt info
 ls = list( coef = data.frame(b0 = coef[1] , b1 = coef[2] , b2 = coef[3] , c1 = c1 , c2 = c2 , c3 = c3 , c4 = c4 , 
-                             c5 = c5 , c6 = c6 , c7 = c7 , c8 = c8 , c9 = c9 , c10 = c10 ), 
-                             sdc  = data.frame(b0 = sqrt(cm[1,1]) , b1 = sqrt(cm[2,2]) , b2 = sqrt(cm[3,3]) , 
-                                               c1 = sdc1 , c2 = sdc2 , c3 = sdc3 , c4 = sdc4 , c5 = sdc5 , c6 = sdc6 , 
-                                               c7 =sdc7 , c8 = sdc8 , c9 = sdc9 , c10 = sdc10 , c11 = sdc11 , c12 = sdc12 ))
+                             c5 = c5 , c6 = c6 , c7 = c7 , c8 = c8 , c9 = c9 , c10 = c10 ) , 
+           sdc  = data.frame(b0 = sqrt(cm[1,1]) , b1 = sqrt(cm[2,2]) , b2 = sqrt(cm[3,3]) , 
+                             c1 = sdc1 , c2 = sdc2 , c3 = sdc3 , c4 = sdc4 , c5 = sdc5 , c6 = sdc6 , 
+                             c7 =sdc7 , c8 = sdc8 , c9 = sdc9 , c10 = sdc10 , c11 = sdc11 , c12 = sdc12 ))
                              
            
