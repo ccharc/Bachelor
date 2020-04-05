@@ -34,8 +34,8 @@ PRICE17 = elprice17[3:8763,4]
 PRICE18 = elprice18[3:6290,4]
 
 
-SE1price= na_interpolation(c(PRICE15,PRICE16,PRICE17,PRICE18), option = "linear")
-dfprice  = data.frame(SE1price)
+SE1price = na_interpolation(c(PRICE15,PRICE16,PRICE17,PRICE18), option = "linear")
+dfprice = data.frame(SE1price)
 
 #FORBRUG
                   
@@ -56,7 +56,7 @@ WIND17 = wind17[3:8763,3]
 WIND18 = wind18[3:6290,3]
 
 
-SE1wind =na_interpolation(c(WIND15,WIND16,WIND17,WIND18), option = "linear")
+SE1wind = na_interpolation(c(WIND15,WIND16,WIND17,WIND18), option = "linear")
 
 #DATO
 
