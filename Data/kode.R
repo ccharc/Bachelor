@@ -1,6 +1,7 @@
 library(readxl)
 library(vars)
-
+library(imputeTS)
+library(forecast)
 
 elprice15 = data.frame(read.csv("elspot-prices_2015_hourly_eur.csv",sep=";"), "numeric")
 elprice16 = data.frame(read.csv("elspot-prices_2016_hourly_eur.csv",sep=";"), "numeric")
@@ -56,24 +57,22 @@ WIND17 = wind17[3:8763,3]
 WIND18 = wind18[3:6290,3]
 
 
-SE1wind =na_interpolation(c(WIND15,WIND16,WIND17,WIND18), option = "linear")
+SE1wind =data.frame(na_interpolation(c(WIND15,WIND16,WIND17,WIND18), option = "linear"))
 
 #DATO
 
-#dato15 = elprice15[554:8763,1]
-#dato16 = elprice16[3:8787,1]
-#dato17 = elprice17[3:8763,1]
-#dato18 = elprice18[3:6290,1]
+dato15 = elprice15[554:8763,1]
+dato16 = elprice16[3:8787,1]
+dato17 = elprice17[3:8763,1]
+dato18 = elprice18[3:6290,1]
 
-#dato = c(dato15,dato16,dato17,dato18)
+dato = c(dato15,dato16,dato17,dato18)
+
+dato1 <- seq(c(ISOdate(2015,1,24,0)), by = "hours", length.out = 32044)
 
 #DATA
 
-data = data.frame(SE1price,SE1cons,SE1wind)
-
-windseries = msts(data = SE1wind, seasonal.periods = c(24, 48, 168))
-consseries = msts(data = SE1cons, seasonal.periods = c(24, 48, 168))
-priceseries= msts(data = SE1price, seasonal.periods = c(24, 48, 168))
+data = data.frame(dato1,SE1price,SE1cons,SE1wind)
 
 plot.ts(priceseries)
 plot.ts(windseries)
@@ -83,29 +82,28 @@ acf(consseries)
 acf(windseries)
 acf(priceseries)
 
-decwind = decompose(windseries)
-deccons = decompose(consseries)
-decprice = decompose(priceseries)
 
-plot(decwind)
-plot(deccons)
-plot(decprice)
+model1= glm(data[,2] ~ time(data[,1]) + 
+                I(time(data[,1])^2) +
+                sin((2*pi)/365*I(time(data[,1]))) + 
+                cos((2*pi)/365*I(time(data[,1])))+
+                sin((4*pi)/365*I(time(data[,1])))+ 
+                cos((4*pi)/365*I(time(data[,1])))+
+                sin((8*pi)/365*I(time(data[,1])))+ 
+                cos((8*pi)/365*I(time(data[,1])))+
+                sin((24*pi)/365*I(time(data[,1])))+ 
+                cos((24*pi)/365*I(time(data[,1])))+  
+                sin((104*pi)/365*I(time(data[,1])))+ 
+                cos((104*pi)/365*I(time(data[,1])))+
+                sin((730*pi)/365*I(time(data[,1])))+ 
+                cos((730*pi)/365*I(time(data[,1])))+
+                sin((17520*pi)/365*I(time(data[,1])))+ 
+                cos((17520*pi)/365*I(time(data[,1])))   
+)
+summary(model1)
 
-myfunc = function(b_0, b_T, c_1,c_2,c_3,c_4,c_5,c_6,c_7,c_8,c_9,c_10,c_11,c_12,c13,c_14,t){
-        b_0+b_T*t+
-                c_1 * sin((t*2*pi)/365) + c_2* cos((t*2*pi)/365)+
-                c_3 * sin((t*4*pi)/365) + c_4 * cos((t*4*pi)/365)+
-                c_5 * sin((t*8*pi)/365) + c_6 * cos((t*8*pi)/365)+
-                c_7 * sin((t*24*pi)/365) + c_8 * cos((t*24*pi)/365)+  
-                c_9 * sin((t*104*pi)/365) + c_10 * cos((t*104*pi)/365)+
-                c_11 * sin((t*730*pi)/365) + c_12 * cos((t*730*pi)/365)+
-                c_13 * sin((t*17520*pi)/365) + c_14 * cos((t*17520*pi)/365)   
-  }
-
-
-
-
-
+x_t = ts(model1$residuals)
+plot.ts(x_t)
 
 
 
