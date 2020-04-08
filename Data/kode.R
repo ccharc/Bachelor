@@ -35,8 +35,8 @@ PRICE17 = elprice17[3:8763,4]
 PRICE18 = elprice18[3:6290,4]
 
 
-SE1price= na_interpolation(c(PRICE15,PRICE16,PRICE17,PRICE18), option = "linear")
-dfprice  = data.frame(SE1price)
+SE1price = na_interpolation(c(PRICE15,PRICE16,PRICE17,PRICE18), option = "linear")
+dfprice = data.frame(SE1price)
 
 #FORBRUG
                   
@@ -57,7 +57,11 @@ WIND17 = wind17[3:8763,3]
 WIND18 = wind18[3:6290,3]
 
 
+<<<<<<< HEAD
 SE1wind =data.frame(na_interpolation(c(WIND15,WIND16,WIND17,WIND18), option = "linear"))
+=======
+SE1wind = na_interpolation(c(WIND15,WIND16,WIND17,WIND18), option = "linear")
+>>>>>>> 7730ee0a99550e2e8167fc4b88db167f80ae5d81
 
 #DATO
 
@@ -82,6 +86,7 @@ acf(consseries)
 acf(windseries)
 acf(priceseries)
 
+<<<<<<< HEAD
 
 model1= glm(data[,2] ~ time(data[,1]) + 
                 I(time(data[,1])^2) +
@@ -105,6 +110,32 @@ summary(model1)
 x_t = ts(model1$residuals)
 plot.ts(x_t)
 
+=======
+decwind = decompose(windseries)
+deccons = decompose(consseries)
+decprice = decompose(priceseries)
+
+plot(decwind)
+plot(deccons)
+plot(decprice)
+
+myfunc = function(b_0, b_T, c_1,c_2,c_3,c_4,c_5,c_6,c_7,c_8,c_9,c_10,c_11,c_12,c13,c_14,t){
+        b_0+b_T*t+
+                c_1 * sin((t*2*pi)/365) + c_2* cos((t*2*pi)/365)+
+                c_3 * sin((t*4*pi)/365) + c_4 * cos((t*4*pi)/365)+
+                c_5 * sin((t*8*pi)/365) + c_6 * cos((t*8*pi)/365)+
+                c_7 * sin((t*24*pi)/365) + c_8 * cos((t*24*pi)/365)+  
+                c_9 * sin((t*104*pi)/365) + c_10 * cos((t*104*pi)/365)+
+                c_11 * sin((t*730*pi)/365) + c_12 * cos((t*730*pi)/365)+
+                c_13 * sin((t*17520*pi)/365) + c_14 * cos((t*17520*pi)/365)   
+  }
+
+myfunc(windseries)
+
+arima(windseries)
+arima(consseries)
+arima(priceseries)
+>>>>>>> 7730ee0a99550e2e8167fc4b88db167f80ae5d81
 
 
 
