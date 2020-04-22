@@ -67,27 +67,17 @@ SE1wind =data.frame(na_interpolation(c(WIND15,WIND16,WIND17,WIND18), option = "l
 
 #DATO
 
-dato15 = elprice15[554:8763,1]
-dato16 = elprice16[3:8787,1]
-dato17 = elprice17[3:8763,1]
-dato18 = elprice18[3:6290,1]
-
-dato = c(dato15,dato16,dato17,dato18)
-
 dato1 <- seq(c(ISOdate(2015,1,24,0)), by = "hours", length.out = 32044)
 
 #DATA
 
 data = data.frame(dato1,SE1price,SE1cons,SE1wind)
 
-plot.ts(priceseries)
-plot.ts(windseries)
-plot.ts(consseries)
+consseries = ts(data[,3])
 
-acf(consseries)
-acf(windseries)
-acf(priceseries)
+roots(consseries)
 
+plot.ts(SE1cons)
 
 # model
 
@@ -160,11 +150,13 @@ plot.ts(y_t)
 X_t = data.frame(y_t,x_t, z_t)
 
 
-VARselect(X_t, lag.max = 10)
+model2 = VARselect(X_t, lag.max = 10)
+summary(model2)
 
 model1 =VAR(X_t, ic = "AIC", lag.max = 20)
 summary(model1)
 
+roots(model1)
 
 
 

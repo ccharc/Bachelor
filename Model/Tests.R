@@ -14,15 +14,18 @@ res = resid(model1)
 acf(res)
 
 
+stationary.test(x_t)
+
+
 #test
 
 #aic
 
 
 #dickey fuller 
-adf.test(y_t) #stationær
-adf.test(x_t) #stationær
-adf.test(z_t) #stationær
+adf.test(y_t) #stationær lille p-værdi forkaster h0
+adf.test(x_t) #stationær lille p-værdi forkaster h0
+adf.test(z_t) #stationær lille p-værdi forkaster h0
 
 
 #Breusch-Godfrey lm 
