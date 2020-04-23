@@ -6,82 +6,81 @@ library(tseries)
 library(stats)
 library(strucchange)
 
-elprice15 = data.frame(read.csv("elspot-prices_2015_hourly_eur.csv",sep=";"), "numeric")
+#elprice15 = data.frame(read.csv("elspot-prices_2015_hourly_eur.csv",sep=";"), "numeric")
 elprice16 = data.frame(read.csv("elspot-prices_2016_hourly_eur.csv",sep=";"), "numeric")
-elprice17 = data.frame(read.csv("elspot-prices_2017_hourly_eur.csv",sep=";"), "numeric")
-elprice18 = data.frame(read.csv("elspot-prices_2018_hourly_eur.csv",sep=";"), "numeric")
+#elprice17 = data.frame(read.csv("elspot-prices_2017_hourly_eur.csv",sep=";"), "numeric")
+#elprice18 = data.frame(read.csv("elspot-prices_2018_hourly_eur.csv",sep=";"), "numeric")
 
-cons15 = data.frame(read.csv("consumption-se-areas_2015_hourly.csv",sep=";"))
+#cons15 = data.frame(read.csv("consumption-se-areas_2015_hourly.csv",sep=";"))
 cons16 = data.frame(read.csv("consumption-se-areas_2016_hourly.csv",sep=";"))
-cons17 = data.frame(read.csv("consumption-se-areas_2017_hourly.csv",sep=";"))
-cons18 = data.frame(read.csv("consumption-se-areas_2018_hourly.csv",sep=";"))
+#cons17 = data.frame(read.csv("consumption-se-areas_2017_hourly.csv",sep=";"))
+#cons18 = data.frame(read.csv("consumption-se-areas_2018_hourly.csv",sep=";"))
 
-wind15 = data.frame(read.csv("wind-power-se_2015_hourly.csv",sep=";"))
+#wind15 = data.frame(read.csv("wind-power-se_2015_hourly.csv",sep=";"))
 wind16 = data.frame(read.csv("wind-power-se_2016_hourly.csv",sep=";"))
-wind17 = data.frame(read.csv("wind-power-se_2017_hourly.csv",sep=";"))
-wind18 = data.frame(read.csv("wind-power-se_2018_hourly.csv",sep=";"))
+#wind17 = data.frame(read.csv("wind-power-se_2017_hourly.csv",sep=";"))
+#wind18 = data.frame(read.csv("wind-power-se_2018_hourly.csv",sep=";"))
 
-#DATOER
-
-#TIMER
-#HOURS15 = dfp15[747:8763,2]
-#HOURS16 = dfp16[3:8787,2]
-#HOURS17 = dfp17[3:8763,2]
-#HOURS18 = dfp18[3:8763,2]
-
-#Hours = c(HOURS15,HOURS16,HOURS17,HOURS18)
 
 #PRISER
-PRICE15 = elprice15[554:8763,4]
-PRICE16 = elprice16[3:8787,4]
-PRICE17 = elprice17[3:8763,4]
-PRICE18 = elprice18[3:6290,4]
+#PRICE15 = elprice15[554:8763,4]
+PRICE16 = elprice16[3:8787,5]
+#PRICE17 = elprice17[3:8763,4]
+#PRICE18 = elprice18[3:6290,4]
 
 
-SE1price = data.frame(na_interpolation(c(PRICE15,PRICE16,PRICE17,PRICE18), option = "linear"))
-
+SE2price = data.frame(na_interpolation(c(PRICE16), option = "linear")) 
 
 #FORBRUG
                   
-CONS15 = cons15[554:8763,3]
-CONS16 = cons16[3:8787,3]
-CONS17 = cons17[3:8763,3]
-CONS18 = cons18[3:6290,3]
+#CONS15 = cons15[554:8763,3]
+CONS16 = cons16[3:8787,4]
+#CONS17 = cons17[3:8763,3]
+#CONS18 = cons18[3:6290,3]
 
-SE1cons = data.frame(na_interpolation(c(CONS15,CONS16,CONS17,CONS18), option = "linear"))
-
+SE2cons = data.frame(na_interpolation(c(CONS16), option = "linear"))
 
 
 #VINDPRODUKTION
 
-WIND15 = wind15[554:8763,3]
-WIND16 = wind16[3:8787,3]
-WIND17 = wind17[3:8763,3]
-WIND18 = wind18[3:6290,3]
+#WIND15 = wind15[554:8763,3]
+WIND16 = wind16[3:8787,4]
+#WIND17 = wind17[3:8763,3]
+#WIND18 = wind18[3:6290,3]
 
 
 
-SE1wind =data.frame(na_interpolation(c(WIND15,WIND16,WIND17,WIND18), option = "linear"))
-
-
+SE2wind =data.frame(na_interpolation(c(WIND16), option = "linear"))
 
 #DATO
 
-dato1 <- seq(c(ISOdate(2015,1,24,0)), by = "hours", length.out = 32044)
+dato1 <- seq(c(ISOdate(2016,1,1,0)), by = "hours", length.out = 8785)
 
 #DATA
 
-data = data.frame(dato1,SE1price,SE1cons,SE1wind)
+data = data.frame(dato1,SE2price,SE2cons,SE2wind)
 
-consseries = ts(data[,3])
+se2pricekvart1 = data[1:2182,1:2]
+se2pricekvart2 = data[2183:4366,1:2]
+se2pricekvart3 = data[4367:6574,1:2]
+se2pricekvart4 = data[6575:8785,1:2]
 
-roots(consseries)
+se2conskvart1 = data[1:2182,c(1,3)]
+se2conskvart2 = data[2183:4366,c(1,3)]
+se2conskvart3 = data[4367:6574,c(1,3)]
+se2conskvart4 = data[6575:8785,c(1,3)]
 
-plot.ts(SE1cons)
-
+se2windkvart1 = data[1:2182,c(1,4)]
+se2windkvart2 = data[2183:4366,c(1,4)]
+se2windkvart3 = data[4367:6574,c(1,4)]
+se2windkvart4 = data[6575:8785,c(1,4)]
 # model
 
-swind= glm(data[,4] ~ time(data[,1]) + 
+
+
+
+
+swind = glm(data[,4] ~ time(data[,1]) + 
                 I(time(data[,1])^2) +
                 sin((2*pi)/365.25*I(time(data[,1]))) + 
                 cos((2*pi)/365.25*I(time(data[,1])))+
