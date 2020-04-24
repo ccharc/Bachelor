@@ -1,41 +1,66 @@
-serial.test(model1, type = "BG")#Der er seriekorrelation i fejledene. (Econometri)
+### SERIEKORRELATION
+serial.test(fit1, type = "BG")#p - værdi mindre end 0.05. Reject H_0
 
-arch.test(model1)
+serial.test(fit2, type = "BG")#p - værdi mindre end 0.05. Reject H_0
 
-normality.test(model1)
+serial.test(fit3, type = "BG")#p - værdi mindre end 0.05. Reject H_0
 
-efp(model1)
-
-causality(model1)
-
-irf(model1, seed = 123)
-
-res = resid(model1)
-acf(res)
+serial.test(fit4, type = "BG")#p - værdi mindre end 0.05. Reject H_0
 
 
-stationary.test(x_t)
+### HOMOSKEDASDICITET
+arch.test(fit1)#p - værdi mindre end 0.05. Reject H_0
+
+arch.test(fit2)#p - værdi mindre end 0.05. Reject H_0
+
+arch.test(fit3)#p - værdi mindre end 0.05. Reject H_0
+
+arch.test(fit4)#p - værdi mindre end 0.05. Reject H_0
 
 
-#test
+###Normalitet
 
-#aic
+normality.test(fit1)#p - værdi mindre end 0.05. Reject H_0
+
+normality.test(fit2)#p - værdi mindre end 0.05. Reject H_0
+
+normality.test(fit3)#p - værdi mindre end 0.05. Reject H_0
+
+normality.test(fit4)#p - værdi mindre end 0.05. Reject H_0
 
 
-#dickey fuller 
-adf.test(y_t) #stationær lille p-værdi forkaster h0
-adf.test(x_t) #stationær lille p-værdi forkaster h0
-adf.test(z_t) #stationær lille p-værdi forkaster h0
+
+###Stationaritet
+
+adf.test(y_t1)#p - værdi mindre end 0.05. Reject H_0
+
+adf.test(y_t2)#p - værdi mindre end 0.05. Reject H_0
+
+adf.test(y_t3)#p - værdi mindre end 0.05. Reject H_0
+
+adf.test(y_t4)#p - værdi mindre end 0.05. Reject H_0
 
 
-#Breusch-Godfrey lm 
-dwtest(model1)
 
-w = bgtest(y_t~x_t)
-coeftest(w)
-w
+adf.test(x_t1)#p - værdi mindre end 0.05. Reject H_0
 
-r = bgtest(y_t~ x_t)
-coeftest(r)
-r
+adf.test(x_t2)#p - værdi mindre end 0.05. Reject H_0
+
+adf.test(x_t3)#p - værdi mindre end 0.05. Reject H_0
+
+adf.test(x_t4)#p - værdi mindre end 0.05. Reject H_0
+
+
+
+adf.test(z_t1)#p - værdi mindre end 0.05. Reject H_0
+
+adf.test(z_t2)#p - værdi mindre end 0.05. Reject H_0
+
+adf.test(z_t3)#p - værdi mindre end 0.05. Reject H_0
+
+adf.test(z_t4)#p - værdi mindre end 0.05. Reject H_0
+
+
+
+
 
