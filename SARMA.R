@@ -117,3 +117,4 @@ seas_Xt = data.frame(res_y1, res_x1, res_z1)
 
 seas_fit1 = VAR(seas_Xt, ic = "AIC", lag.max = 10)
 summary(seas_fit1)
+
