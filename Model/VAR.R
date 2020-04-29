@@ -31,8 +31,8 @@ swindkvart1 = glm(se2windkvart1[,2] ~ time(se2windkvart1[,1]) +
                      cos((104*pi)/8784*I(time(se2windkvart1[,1])))+
                      sin((732*pi)/8784*I(time(se2windkvart1[,1])))+ 
                      cos((732*pi)/8784*I(time(se2windkvart1[,1])))+
-                     sin((17570*pi)/8784*I(time(se2windkvart1[,1])))+ 
-                     cos((17570*pi)/8784*I(time(se2windkvart1[,1])))   
+                     sin((17568*pi)/8784*I(time(se2windkvart1[,1])))+ 
+                     cos((17568*pi)/8784*I(time(se2windkvart1[,1])))   
 )
 
 swindkvart2 = glm(se2windkvart2[,2] ~ time(se2windkvart2[,1]) + 
@@ -45,8 +45,8 @@ swindkvart2 = glm(se2windkvart2[,2] ~ time(se2windkvart2[,1]) +
                     cos((104*pi)/8784*I(time(se2windkvart2[,1])))+
                     sin((732*pi)/8784*I(time(se2windkvart2[,1])))+ 
                     cos((732*pi)/8784*I(time(se2windkvart2[,1])))+
-                    sin((17570*pi)/8784*I(time(se2windkvart2[,1])))+ 
-                    cos((17570*pi)/8784*I(time(se2windkvart2[,1])))   
+                    sin((17568*pi)/8784*I(time(se2windkvart2[,1])))+ 
+                    cos((17568*pi)/8784*I(time(se2windkvart2[,1])))   
 )
 
 swindkvart3 = glm(se2windkvart3[,2] ~ time(se2windkvart3[,1]) + 
@@ -59,8 +59,8 @@ swindkvart3 = glm(se2windkvart3[,2] ~ time(se2windkvart3[,1]) +
                     cos((104*pi)/8784*I(time(se2windkvart3[,1])))+
                     sin((732*pi)/8784*I(time(se2windkvart3[,1])))+ 
                     cos((732*pi)/8784*I(time(se2windkvart3[,1])))+
-                    sin((17570*pi)/8784*I(time(se2windkvart3[,1])))+ 
-                    cos((17570*pi)/8784*I(time(se2windkvart3[,1])))   
+                    sin((17568*pi)/8784*I(time(se2windkvart3[,1])))+ 
+                    cos((17568*pi)/8784*I(time(se2windkvart3[,1])))   
 )
   
 swindkvart4 = glm(se2windkvart4[,2] ~ time(se2windkvart4[,1]) + 
@@ -73,8 +73,8 @@ swindkvart4 = glm(se2windkvart4[,2] ~ time(se2windkvart4[,1]) +
                     cos((104*pi)/8784*I(time(se2windkvart4[,1])))+
                     sin((732*pi)/8784*I(time(se2windkvart4[,1])))+ 
                     cos((732*pi)/8784*I(time(se2windkvart4[,1])))+
-                    sin((17570*pi)/8784*I(time(se2windkvart4[,1])))+ 
-                    cos((17570*pi)/8784*I(time(se2windkvart4[,1])))   
+                    sin((17568*pi)/8784*I(time(se2windkvart4[,1])))+ 
+                    cos((17568*pi)/8784*I(time(se2windkvart4[,1])))   
 )
 
 swind = glm(data[,4] ~ time(data[,1]) + 
@@ -91,8 +91,8 @@ swind = glm(data[,4] ~ time(data[,1]) +
               cos((104*pi)/8784*I(time(data[,1])))+
               sin((732*pi)/8784*I(time(data[,1])))+ 
               cos((732*pi)/8784*I(time(data[,1])))+
-              sin((17570*pi)/8784*I(time(data[,1])))+ 
-              cos((17570*pi)/8784*I(time(data[,1])))   
+              sin((17568*pi)/8784*I(time(data[,1])))+ 
+              cos((17568*pi)/8784*I(time(data[,1])))   
 )
 summary(swind)
 
@@ -112,8 +112,8 @@ sconskvart1 = glm(se2conskvart1[,2] ~ time(se2conskvart1[,1]) +
                       cos((104*pi)/8784*I(time(se2conskvart1[,1])))+
                       sin((732*pi)/8784*I(time(se2conskvart1[,1])))+ 
                       cos((732*pi)/8784*I(time(se2conskvart1[,1])))+
-                      sin((17570*pi)/8784*I(time(se2conskvart1[,1])))+ 
-                      cos((17570*pi)/8784*I(time(se2conskvart1[,1])))   
+                      sin((17568*pi)/8784*I(time(se2conskvart1[,1])))+ 
+                      cos((17568*pi)/8784*I(time(se2conskvart1[,1])))   
 )
 
 sconskvart2 = glm(se2conskvart2[,2] ~ time(se2conskvart2[,1]) + 
@@ -126,8 +126,8 @@ sconskvart2 = glm(se2conskvart2[,2] ~ time(se2conskvart2[,1]) +
                     cos((104*pi)/8784*I(time(se2conskvart2[,1])))+
                     sin((732*pi)/8784*I(time(se2conskvart2[,1])))+ 
                     cos((732*pi)/8784*I(time(se2conskvart2[,1])))+
-                    sin((17570*pi)/8784*I(time(se2conskvart2[,1])))+ 
-                    cos((17570*pi)/8784*I(time(se2conskvart2[,1])))   
+                    sin((17568*pi)/8784*I(time(se2conskvart2[,1])))+ 
+                    cos((17568*pi)/8784*I(time(se2conskvart2[,1])))   
 )
 
 sconskvart3 = glm(se2conskvart3[,2] ~ time(se2conskvart3[,1]) + 
@@ -140,8 +140,8 @@ sconskvart3 = glm(se2conskvart3[,2] ~ time(se2conskvart3[,1]) +
                     cos((104*pi)/8784*I(time(se2conskvart3[,1])))+
                     sin((732*pi)/8784*I(time(se2conskvart3[,1])))+ 
                     cos((732*pi)/8784*I(time(se2conskvart3[,1])))+
-                    sin((17570*pi)/8784*I(time(se2conskvart3[,1])))+ 
-                    cos((17570*pi)/8784*I(time(se2conskvart3[,1])))   
+                    sin((17568*pi)/8784*I(time(se2conskvart3[,1])))+ 
+                    cos((17568*pi)/8784*I(time(se2conskvart3[,1])))   
 )
 
 sconskvart4 = glm(se2conskvart4[,2] ~ time(se2conskvart4[,1]) + 
@@ -154,8 +154,8 @@ sconskvart4 = glm(se2conskvart4[,2] ~ time(se2conskvart4[,1]) +
                     cos((104*pi)/8784*I(time(se2conskvart4[,1])))+
                     sin((732*pi)/8784*I(time(se2conskvart4[,1])))+ 
                     cos((732*pi)/8784*I(time(se2conskvart4[,1])))+
-                    sin((17570*pi)/8784*I(time(se2conskvart4[,1])))+ 
-                    cos((17570*pi)/8784*I(time(se2conskvart4[,1])))   
+                    sin((17568*pi)/8784*I(time(se2conskvart4[,1])))+ 
+                    cos((17568*pi)/8784*I(time(se2conskvart4[,1])))   
 )
 
 
@@ -173,8 +173,8 @@ scons= glm(data[,3] ~ time(data[,1]) +
              cos((104*pi)/8784*I(time(data[,1])))+
              sin((732*pi)/8784*I(time(data[,1])))+ 
              cos((732*pi)/8784*I(time(data[,1])))+
-             sin((17570*pi)/8784*I(time(data[,1])))+ 
-             cos((17570*pi)/8784*I(time(data[,1])))   
+             sin((17568*pi)/8784*I(time(data[,1])))+ 
+             cos((17568*pi)/8784*I(time(data[,1])))   
 )
 
 summary(scons)
@@ -195,8 +195,8 @@ spricekvart1 = glm(se2pricekvart1[,2] ~ time(se2pricekvart1[,1]) +
                     cos((104*pi)/8784*I(time(se2pricekvart1[,1])))+
                     sin((732*pi)/8784*I(time(se2pricekvart1[,1])))+ 
                     cos((732*pi)/8784*I(time(se2pricekvart1[,1])))+
-                    sin((17570*pi)/8784*I(time(se2pricekvart1[,1])))+ 
-                    cos((17570*pi)/8784*I(time(se2pricekvart1[,1])))   
+                    sin((17568*pi)/8784*I(time(se2pricekvart1[,1])))+ 
+                    cos((17568*pi)/8784*I(time(se2pricekvart1[,1])))   
 )
 
 spricekvart2 = glm(se2pricekvart2[,2] ~ time(se2pricekvart2[,1]) + 
@@ -209,8 +209,8 @@ spricekvart2 = glm(se2pricekvart2[,2] ~ time(se2pricekvart2[,1]) +
                      cos((104*pi)/8784*I(time(se2pricekvart2[,1])))+
                      sin((732*pi)/8784*I(time(se2pricekvart2[,1])))+ 
                      cos((732*pi)/8784*I(time(se2pricekvart2[,1])))+
-                     sin((17570*pi)/8784*I(time(se2pricekvart2[,1])))+ 
-                     cos((17570*pi)/8784*I(time(se2pricekvart2[,1])))   
+                     sin((17568*pi)/8784*I(time(se2pricekvart2[,1])))+ 
+                     cos((17568*pi)/8784*I(time(se2pricekvart2[,1])))   
 )
 
 spricekvart3 = glm(se2pricekvart3[,2] ~ time(se2pricekvart3[,1]) + 
@@ -223,8 +223,8 @@ spricekvart3 = glm(se2pricekvart3[,2] ~ time(se2pricekvart3[,1]) +
                      cos((104*pi)/8784*I(time(se2pricekvart3[,1])))+
                      sin((732*pi)/8784*I(time(se2pricekvart3[,1])))+ 
                      cos((732*pi)/8784*I(time(se2pricekvart3[,1])))+
-                     sin((17570*pi)/8784*I(time(se2pricekvart3[,1])))+ 
-                     cos((17570*pi)/8784*I(time(se2pricekvart3[,1])))   
+                     sin((17568*pi)/8784*I(time(se2pricekvart3[,1])))+ 
+                     cos((17568*pi)/8784*I(time(se2pricekvart3[,1])))   
 )
 
 spricekvart4 = glm(se2pricekvart4[,2] ~ time(se2pricekvart4[,1]) + 
@@ -237,8 +237,8 @@ spricekvart4 = glm(se2pricekvart4[,2] ~ time(se2pricekvart4[,1]) +
                      cos((104*pi)/8784*I(time(se2pricekvart4[,1])))+
                      sin((732*pi)/8784*I(time(se2pricekvart4[,1])))+ 
                      cos((732*pi)/8784*I(time(se2pricekvart4[,1])))+
-                     sin((17570*pi)/8784*I(time(se2pricekvart4[,1])))+ 
-                     cos((17570*pi)/8784*I(time(se2pricekvart4[,1])))   
+                     sin((17568*pi)/8784*I(time(se2pricekvart4[,1])))+ 
+                     cos((17568*pi)/8784*I(time(se2pricekvart4[,1])))   
 )
 
 
@@ -256,8 +256,8 @@ sprice= glm(data[,2] ~ time(data[,1]) +
               cos((104*pi)/8784*I(time(data[,1])))+
               sin((732*pi)/8784*I(time(data[,1])))+ 
               cos((732*pi)/8784*I(time(data[,1])))+
-              sin((17570*pi)/8784*I(time(data[,1])))+ 
-              cos((17570*pi)/8784*I(time(data[,1])))   
+              sin((17568*pi)/8784*I(time(data[,1])))+ 
+              cos((17568*pi)/8784*I(time(data[,1])))   
 )
 summary(sprice)
 

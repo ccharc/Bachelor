@@ -32,8 +32,8 @@ swindkvart1 = glm(se2windkvart1[,2] ~ time(se2windkvart1[,1]) +
                     cos((104*pi)/8784*I(time(se2windkvart1[,1])))+
                     sin((732*pi)/8784*I(time(se2windkvart1[,1])))+ 
                     cos((732*pi)/8784*I(time(se2windkvart1[,1])))+
-                    sin((17570*pi)/8784*I(time(se2windkvart1[,1])))+ 
-                    cos((17570*pi)/8784*I(time(se2windkvart1[,1])))   
+                    sin((17568*pi)/8784*I(time(se2windkvart1[,1])))+ 
+                    cos((17568*pi)/8784*I(time(se2windkvart1[,1])))   
 )
 
 sconskvart1 = glm(se2conskvart1[,2] ~ time(se2conskvart1[,1]) + 
@@ -46,8 +46,8 @@ sconskvart1 = glm(se2conskvart1[,2] ~ time(se2conskvart1[,1]) +
                     cos((104*pi)/8784*I(time(se2conskvart1[,1])))+
                     sin((732*pi)/8784*I(time(se2conskvart1[,1])))+ 
                     cos((732*pi)/8784*I(time(se2conskvart1[,1])))+
-                    sin((17570*pi)/8784*I(time(se2conskvart1[,1])))+ 
-                    cos((17570*pi)/8784*I(time(se2conskvart1[,1])))   
+                    sin((17568*pi)/8784*I(time(se2conskvart1[,1])))+ 
+                    cos((17568*pi)/8784*I(time(se2conskvart1[,1])))   
 )
 
 spricekvart1 = glm(se2pricekvart1[,2] ~ time(se2pricekvart1[,1]) + 
@@ -60,8 +60,8 @@ spricekvart1 = glm(se2pricekvart1[,2] ~ time(se2pricekvart1[,1]) +
                      cos((104*pi)/8784*I(time(se2pricekvart1[,1])))+
                      sin((732*pi)/8784*I(time(se2pricekvart1[,1])))+ 
                      cos((732*pi)/8784*I(time(se2pricekvart1[,1])))+
-                     sin((17570*pi)/8784*I(time(se2pricekvart1[,1])))+ 
-                     cos((17570*pi)/8784*I(time(se2pricekvart1[,1])))   
+                     sin((17568*pi)/8784*I(time(se2pricekvart1[,1])))+ 
+                     cos((17568*pi)/8784*I(time(se2pricekvart1[,1])))   
 )
 # WIND
 x_t1 = ts(swindkvart1$residuals)

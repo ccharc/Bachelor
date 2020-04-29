@@ -30,7 +30,7 @@ PRICE16 = elprice16[1:8784,5]
 #PRICE18 = elprice18[3:6290,4]
 
 
-SE2price = data.frame(na.approx(c(PRICE16)))
+SE2price = data.frame(na_interpolation(c(PRICE16), option = "linear"))
 
 
 
