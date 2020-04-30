@@ -207,6 +207,8 @@ x_t3 = ts(sprodkvart3$residuals)
 
 x_t4 = ts(sprodkvart4$residuals)
 
+acf(x_t1)
+
 #CONS
 
 z_t1 = ts(sconskvart1$residuals)[1:2182]
@@ -246,6 +248,7 @@ fit2 = VAR(X_t2, ic = "AIC", lag.max = 10)
 fit3 = VAR(X_t3, ic = "AIC", lag.max = 10)
 
 fit4 = VAR(X_t4, ic = "AIC", lag.max = 10)
+
 
 
 

@@ -1,126 +1,144 @@
 ### SARMA 
 
-### Sæson kvartal price
-
-se2pricekvart1 = data[1:2182,1:2]
-se2pricekvart2 = data[2183:4366,1:2]
-se2pricekvart3 = data[4367:6574,1:2]
-se2pricekvart4 = data[6575:8784,1:2]
-
-
-### Sæson kvartal cons
-
-se2conskvart1 = data[1:2182,c(1,3)]
-se2conskvart2 = data[2183:4366,c(1,3)]
-se2conskvart3 = data[4367:6574,c(1,3)]
-se2conskvart4 = data[6575:8784,c(1,3)]
-
-
-### Sæson kvartal wind
-
-se2prodkvart1 = data[1:2182,c(1,4)]
-se2prodkvart2 = data[2183:4366,c(1,4)]
-se2prodkvart3 = data[4367:6574,c(1,4)]
-se2prodkvart4 = data[6575:8784,c(1,4)]
-
-
-sprodkvart1 = glm(se2prodkvart1[,2] ~ time(se2prodkvart1[,1]) + 
-                    I(time(se2prodkvart1[,1])^2) +
-                    sin((8*pi)/8784*I(time(se2prodkvart1[,1])))+ 
-                    cos((8*pi)/8784*I(time(se2prodkvart1[,1])))+
-                    sin((24*pi)/8784*I(time(se2prodkvart1[,1])))+ 
-                    cos((24*pi)/8784*I(time(se2prodkvart1[,1])))+  
-                    sin((104*pi)/8784*I(time(se2prodkvart1[,1])))+ 
-                    cos((104*pi)/8784*I(time(se2prodkvart1[,1])))+
-                    sin((732*pi)/8784*I(time(se2prodkvart1[,1])))+ 
-                    cos((732*pi)/8784*I(time(se2prodkvart1[,1])))+
-                    sin((17568*pi)/8784*I(time(se2prodkvart1[,1])))+ 
-                    cos((17568*pi)/8784*I(time(se2prodkvart1[,1])))   
-)
-
-sconskvart1 = glm(se2conskvart1[,2] ~ time(se2conskvart1[,1]) + 
-                    I(time(se2conskvart1[,1])^2) +
-                    sin((8*pi)/8784*I(time(se2conskvart1[,1])))+ 
-                    cos((8*pi)/8784*I(time(se2conskvart1[,1])))+
-                    sin((24*pi)/8784*I(time(se2conskvart1[,1])))+ 
-                    cos((24*pi)/8784*I(time(se2conskvart1[,1])))+  
-                    sin((104*pi)/8784*I(time(se2conskvart1[,1])))+ 
-                    cos((104*pi)/8784*I(time(se2conskvart1[,1])))+
-                    sin((732*pi)/8784*I(time(se2conskvart1[,1])))+ 
-                    cos((732*pi)/8784*I(time(se2conskvart1[,1])))+
-                    sin((17568*pi)/8784*I(time(se2conskvart1[,1])))+ 
-                    cos((17568*pi)/8784*I(time(se2conskvart1[,1])))   
-)
-
-spricekvart1 = glm(se2pricekvart1[,2] ~ time(se2pricekvart1[,1]) + 
-                     I(time(se2pricekvart1[,1])^2) +
-                     sin((8*pi)/8784*I(time(se2pricekvart1[,1])))+ 
-                     cos((8*pi)/8784*I(time(se2pricekvart1[,1])))+
-                     sin((24*pi)/8784*I(time(se2pricekvart1[,1])))+ 
-                     cos((24*pi)/8784*I(time(se2pricekvart1[,1])))+  
-                     sin((104*pi)/8784*I(time(se2pricekvart1[,1])))+ 
-                     cos((104*pi)/8784*I(time(se2pricekvart1[,1])))+
-                     sin((732*pi)/8784*I(time(se2pricekvart1[,1])))+ 
-                     cos((732*pi)/8784*I(time(se2pricekvart1[,1])))+
-                     sin((17568*pi)/8784*I(time(se2pricekvart1[,1])))+ 
-                     cos((17568*pi)/8784*I(time(se2pricekvart1[,1])))   
-)
-# WIND
-x_t1 = ts(sprodkvart1$residuals)
-
-x_t2 = ts(sprodkvart2$residuals)
-
-x_t3 = ts(sprodkvart3$residuals)
-
-x_t4 = ts(sprodkvart4$residuals)
-
-#CONS
-
-z_t1 = ts(sconskvart1$residuals)
-
-z_t2 = ts(sconskvart2$residuals)
-
-z_t3 = ts(sconskvart3$residuals)
-
-z_t4 = ts(sconskvart4$residuals)
-
-# PRICE
-
-y_t1 = ts(spricekvart1$residuals)
-
-y_t2 = ts(spricekvart2$residuals)
-
-y_t3 = ts(spricekvart3$residuals)
-
-y_t4 = ts(spricekvart4$residuals)
-
-
-
-
-
-
-
+### Sæson xt
 
 acf(x_t1)
 
+acf(SE2prod)
+
+#acf(x_t2)
+
+#acf(x_t3)
+
+#acf(x_t4)
+
 seas_x1 = auto.arima(x_t1, d=0, seasonal = TRUE)
 
-res_x1 = ts(seas_x1$residuals)
+res_x1 = ts(seas_x1$residuals)[1:2181]
 
-acf(y_t1)
+acf(res_x1)
+
+
+seas_x2 = auto.arima(x_t2, d=0, seasonal = TRUE)
+
+res_x2 = ts(seas_x2$residuals)
+
+acf(res_x2)
+
+
+seas_x3 = auto.arima(x_t3, d=0, seasonal = TRUE)
+
+res_x3 = ts(seas_x3$residuals)
+
+acf(res_x3)
+
+
+seas_x4 = auto.arima(x_t4, d=0, seasonal = TRUE)
+
+res_x4 = ts(seas_x4$residuals)
+
+acf(res_x4)
+
+
+### Sæson yt
+
+
+#acf(y_t1)
+
+#acf(y_t2)
+
+#acf(y_t3)
+
+#acf(y_t4)
+
 
 seas_y1 = auto.arima(y_t1, d=0, seasonal = TRUE)
 
 res_y1 = ts(seas_y1$residuals)
 
-acf(z_t1)
+acf(res_y1)
+
+seas_y2 = auto.arima(y_t2, d=0, seasonal = TRUE)
+
+res_y2 = ts(seas_y2$residuals)
+
+acf(res_y2)
+
+seas_y3 = auto.arima(y_t3, d=0, seasonal = TRUE)
+
+res_y3 = ts(seas_y3$residuals)
+
+acf(res_y3)
+
+seas_y4 = auto.arima(y_t4, d=0, seasonal = TRUE)
+
+res_y4 = ts(seas_y4$residuals)
+
+acf(res_y4)
+
+
+### Sæson zt
+
+
+#acf(z_t1)
+
+#acf(z_t2)
+
+#acf(z_t3)
+
+#acf(z_t4)
+
 
 seas_z1 = auto.arima(z_t1, d=0, seasonal = TRUE)
 
-res_z1 = ts(seas_z1$residuals)
+res_z1 = ts(seas_z1$residuals)[1:2181]
 
-seas_Xt = data.frame(res_y1, res_x1, res_z1)
 
-seas_fit1 = VAR(seas_Xt, ic = "AIC", lag.max = 10)
+
+seas_z2 = auto.arima(z_t2, d=0, seasonal = TRUE)
+
+res_z2 = ts(seas_z2$residuals)
+
+
+
+seas_z3 = auto.arima(z_t3, d=0, seasonal = TRUE)
+
+res_z3 = ts(seas_z3$residuals)
+
+
+
+seas_z4 = auto.arima(z_t4, d=0, seasonal = TRUE)
+
+res_z4 = ts(seas_z4$residuals)
+
+
+
+seas_Xt1 = data.frame(res_y1, res_x1, res_z1)
+
+seas_Xt2 = data.frame(res_y2, res_x2, res_z2)
+
+seas_Xt3 = data.frame(res_y3, res_x3, res_z3)
+
+seas_Xt4 = data.frame(res_y4, res_x4, res_z4)
+
+
+
+
+seas_fit1 = VAR(seas_Xt1, ic = "AIC", lag.max = 6)
+
+seas_fit2 = VAR(seas_Xt2, ic = "AIC", lag.max = 6)
+
+seas_fit3 = VAR(seas_Xt3, ic = "AIC", lag.max = 6)
+
+seas_fit4 = VAR(seas_Xt4, ic = "AIC", lag.max = 6)
+
+
+
 summary(seas_fit1)
+
+summary(seas_fit2)
+
+summary(seas_fit3)
+
+summary(seas_fit4)
 
