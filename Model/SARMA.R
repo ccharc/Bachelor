@@ -18,22 +18,24 @@ se2conskvart4 = data[6575:8784,c(1,3)]
 
 ### Sæson kvartal wind
 
-se2windkvart1 = data[1:2182,c(1,4)]
-se2windkvart2 = data[2183:4366,c(1,4)]
-se2windkvart3 = data[4367:6574,c(1,4)]
-se2windkvart4 = data[6575:8784,c(1,4)]
-swindkvart1 = glm(se2windkvart1[,2] ~ time(se2windkvart1[,1]) + 
-                    I(time(se2windkvart1[,1])^2) +
-                    sin((8*pi)/8784*I(time(se2windkvart1[,1])))+ 
-                    cos((8*pi)/8784*I(time(se2windkvart1[,1])))+
-                    sin((24*pi)/8784*I(time(se2windkvart1[,1])))+ 
-                    cos((24*pi)/8784*I(time(se2windkvart1[,1])))+  
-                    sin((104*pi)/8784*I(time(se2windkvart1[,1])))+ 
-                    cos((104*pi)/8784*I(time(se2windkvart1[,1])))+
-                    sin((732*pi)/8784*I(time(se2windkvart1[,1])))+ 
-                    cos((732*pi)/8784*I(time(se2windkvart1[,1])))+
-                    sin((17568*pi)/8784*I(time(se2windkvart1[,1])))+ 
-                    cos((17568*pi)/8784*I(time(se2windkvart1[,1])))   
+se2prodkvart1 = data[1:2182,c(1,4)]
+se2prodkvart2 = data[2183:4366,c(1,4)]
+se2prodkvart3 = data[4367:6574,c(1,4)]
+se2prodkvart4 = data[6575:8784,c(1,4)]
+
+
+sprodkvart1 = glm(se2prodkvart1[,2] ~ time(se2prodkvart1[,1]) + 
+                    I(time(se2prodkvart1[,1])^2) +
+                    sin((8*pi)/8784*I(time(se2prodkvart1[,1])))+ 
+                    cos((8*pi)/8784*I(time(se2prodkvart1[,1])))+
+                    sin((24*pi)/8784*I(time(se2prodkvart1[,1])))+ 
+                    cos((24*pi)/8784*I(time(se2prodkvart1[,1])))+  
+                    sin((104*pi)/8784*I(time(se2prodkvart1[,1])))+ 
+                    cos((104*pi)/8784*I(time(se2prodkvart1[,1])))+
+                    sin((732*pi)/8784*I(time(se2prodkvart1[,1])))+ 
+                    cos((732*pi)/8784*I(time(se2prodkvart1[,1])))+
+                    sin((17568*pi)/8784*I(time(se2prodkvart1[,1])))+ 
+                    cos((17568*pi)/8784*I(time(se2prodkvart1[,1])))   
 )
 
 sconskvart1 = glm(se2conskvart1[,2] ~ time(se2conskvart1[,1]) + 
@@ -64,13 +66,13 @@ spricekvart1 = glm(se2pricekvart1[,2] ~ time(se2pricekvart1[,1]) +
                      cos((17568*pi)/8784*I(time(se2pricekvart1[,1])))   
 )
 # WIND
-x_t1 = ts(swindkvart1$residuals)
+x_t1 = ts(sprodkvart1$residuals)
 
-x_t2 = ts(swindkvart2$residuals)
+x_t2 = ts(sprodkvart2$residuals)
 
-x_t3 = ts(swindkvart3$residuals)
+x_t3 = ts(sprodkvart3$residuals)
 
-x_t4 = ts(swindkvart4$residuals)
+x_t4 = ts(sprodkvart4$residuals)
 
 #CONS
 
