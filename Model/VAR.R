@@ -199,7 +199,7 @@ spricekvart4 = glm(se2pricekvart4[,2] ~ time(se2pricekvart4[,1]) +
 # VAR Modeller kvart
 
 # PROD
-x_t1 = ts(sprodkvart1$residuals)
+x_t1 = ts(sprodkvart1$residuals)[1:2182]
 
 x_t2 = ts(sprodkvart2$residuals)
 
@@ -207,9 +207,11 @@ x_t3 = ts(sprodkvart3$residuals)
 
 x_t4 = ts(sprodkvart4$residuals)
 
+acf(x_t1)
+
 #CONS
 
-z_t1 = ts(sconskvart1$residuals)
+z_t1 = ts(sconskvart1$residuals)[1:2182]
 
 z_t2 = ts(sconskvart2$residuals)
 
@@ -230,7 +232,7 @@ y_t4 = ts(spricekvart4$residuals)
 
 # VAR MODEL
 
-X_t1 = data.frame(y_t1,x_t1, z_t1)
+X_t1 = data.frame(y_t1, x_t1, z_t1)
 
 X_t2 = data.frame(y_t2,x_t2, z_t2)
 
@@ -246,6 +248,7 @@ fit2 = VAR(X_t2, ic = "AIC", lag.max = 10)
 fit3 = VAR(X_t3, ic = "AIC", lag.max = 10)
 
 fit4 = VAR(X_t4, ic = "AIC", lag.max = 10)
+
 
 
 
