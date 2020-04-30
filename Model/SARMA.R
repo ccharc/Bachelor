@@ -107,9 +107,13 @@ seas_x1 = auto.arima(x_t1, d=0, seasonal = TRUE)
 
 res_x1 = ts(seas_x1$residuals)
 
+acf(y_t1)
+
 seas_y1 = auto.arima(y_t1, d=0, seasonal = TRUE)
 
 res_y1 = ts(seas_y1$residuals)
+
+acf(z_t1)
 
 seas_z1 = auto.arima(z_t1, d=0, seasonal = TRUE)
 
