@@ -7,6 +7,7 @@ library(stats)
 library(strucchange)
 library(tidyr)
 
+
 elprice16 =  data.frame(read.csv("elspot-prices_2016_hourly_eur.csv",sep=";",dec=","))
 
 

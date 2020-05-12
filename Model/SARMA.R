@@ -2,7 +2,7 @@
 
 ### Sæson xt
 
-acf(x_t1)
+acf2(x_t1)
 
 acf(SE2prod)
 
@@ -12,28 +12,28 @@ acf(SE2prod)
 
 #acf(x_t4)
 
-seas_x1 = auto.arima(x_t1, d=0, seasonal = TRUE)
+seas_x1 = sarima(x_t1,4,1,0,1,0,0,24, no.constant = TRUE)
 
 res_x1 = ts(seas_x1$residuals)[1:2181]
 
 acf(res_x1)
 
 
-seas_x2 = auto.arima(x_t2, d=0, seasonal = TRUE)
+seas_x2 = sarima(x_t2,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_x2 = ts(seas_x2$residuals)
 
 acf(res_x2)
 
 
-seas_x3 = auto.arima(x_t3, d=0, seasonal = TRUE)
+seas_x3 = sarima(x_t3,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_x3 = ts(seas_x3$residuals)
 
 acf(res_x3)
 
 
-seas_x4 = auto.arima(x_t4, d=0, seasonal = TRUE)
+seas_x4 = sarima(x_t4,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_x4 = ts(seas_x4$residuals)
 
@@ -52,25 +52,25 @@ acf(res_x4)
 #acf(y_t4)
 
 
-seas_y1 = auto.arima(y_t1, d=0, seasonal = TRUE)
+seas_y1 = sarima(y_t1,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_y1 = ts(seas_y1$residuals)
 
 acf(res_y1)
 
-seas_y2 = auto.arima(y_t2, d=0, seasonal = TRUE)
+seas_y2 = sarima(y_t2,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_y2 = ts(seas_y2$residuals)
 
 acf(res_y2)
 
-seas_y3 = auto.arima(y_t3, d=0, seasonal = TRUE)
+seas_y3 = sarima(y_t3,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_y3 = ts(seas_y3$residuals)
 
 acf(res_y3)
 
-seas_y4 = auto.arima(y_t4, d=0, seasonal = TRUE)
+seas_y4 = sarima(y_t4,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_y4 = ts(seas_y4$residuals)
 
@@ -89,25 +89,25 @@ acf(res_y4)
 #acf(z_t4)
 
 
-seas_z1 = auto.arima(z_t1, d=0, seasonal = TRUE)
+seas_z1 = sarima(z_t1,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_z1 = ts(seas_z1$residuals)[1:2181]
 
 
 
-seas_z2 = auto.arima(z_t2, d=0, seasonal = TRUE)
+seas_z2 = sarima(z_t2,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_z2 = ts(seas_z2$residuals)
 
 
 
-seas_z3 = auto.arima(z_t3, d=0, seasonal = TRUE)
+seas_z3 = sarima(z_t3,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_z3 = ts(seas_z3$residuals)
 
 
 
-seas_z4 = auto.arima(z_t4, d=0, seasonal = TRUE)
+seas_z4 = sarima(z_t4,4,1,0,1,0,0,24,no.constant = TRUE)
 
 res_z4 = ts(seas_z4$residuals)
 
