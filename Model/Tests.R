@@ -61,6 +61,13 @@ adf.test(z_t3)#p - værdi mindre end 0.05. Reject H_0
 adf.test(z_t4)#p - værdi mindre end 0.05. Reject H_0
 
 
+###Granger
+grang_fit1x = causality(fit1, cause = "x_t1")
+grang_fit1z = causality(fit1, cause = "z_t1")
+
+grang_fit1x
+grang_fit1z
+
 
 
 
