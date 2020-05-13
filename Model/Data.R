@@ -6,6 +6,7 @@ library(tseries)
 library(stats)
 library(strucchange)
 library(tidyr)
+library(astsa)
 
 
 elprice16 =  data.frame(read.csv("elspot-prices_2016_hourly_eur.csv",sep=";",dec=","))
