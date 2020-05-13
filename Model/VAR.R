@@ -21,6 +21,7 @@ se2prodkvart2 = data[2184:4367,c(1,4)]
 se2prodkvart3 = data[4368:6575,c(1,4)]
 se2prodkvart4 = data[6576:8784,c(1,4)]
 
+
 sprodkvart1 = glm(se2prodkvart1[,2] ~ time(se2prodkvart1[,1]) + 
                      I(time(se2prodkvart1[,1])^2) +
                      sin((8*pi)/8784*I(time(se2prodkvart1[,1])))+ 
